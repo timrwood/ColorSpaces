@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		154EC25F1BC21485002DBBEF /* ColorSpaces.h in Headers */ = {isa = PBXBuildFile; fileRef = 154EC25E1BC21485002DBBEF /* ColorSpaces.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		154EC2661BC21485002DBBEF /* ColorSpaces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154EC25B1BC21485002DBBEF /* ColorSpaces.framework */; settings = {ASSET_TAGS = (); }; };
-		154EC26B1BC21485002DBBEF /* ColorSpacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC26A1BC21485002DBBEF /* ColorSpacesTests.swift */; };
+		154EC26B1BC21485002DBBEF /* ColorSpacesRGBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC26A1BC21485002DBBEF /* ColorSpacesRGBTests.swift */; };
+		154EC2761BC21545002DBBEF /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC2751BC21545002DBBEF /* RGBColor.swift */; settings = {ASSET_TAGS = (); }; };
+		154EC2791BC21822002DBBEF /* XYZColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC2781BC21822002DBBEF /* XYZColor.swift */; settings = {ASSET_TAGS = (); }; };
+		154EC27D1BC21B73002DBBEF /* ColorSpacesXYZTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC27B1BC21B73002DBBEF /* ColorSpacesXYZTests.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +30,11 @@
 		154EC25E1BC21485002DBBEF /* ColorSpaces.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorSpaces.h; sourceTree = "<group>"; };
 		154EC2601BC21485002DBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154EC2651BC21485002DBBEF /* ColorSpacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorSpacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		154EC26A1BC21485002DBBEF /* ColorSpacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpacesTests.swift; sourceTree = "<group>"; };
+		154EC26A1BC21485002DBBEF /* ColorSpacesRGBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSpacesRGBTests.swift; sourceTree = "<group>"; };
 		154EC26C1BC21485002DBBEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		154EC2751BC21545002DBBEF /* RGBColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
+		154EC2781BC21822002DBBEF /* XYZColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZColor.swift; sourceTree = "<group>"; };
+		154EC27B1BC21B73002DBBEF /* ColorSpacesXYZTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSpacesXYZTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +79,8 @@
 			children = (
 				154EC25E1BC21485002DBBEF /* ColorSpaces.h */,
 				154EC2601BC21485002DBBEF /* Info.plist */,
+				154EC2751BC21545002DBBEF /* RGBColor.swift */,
+				154EC2781BC21822002DBBEF /* XYZColor.swift */,
 			);
 			path = ColorSpaces;
 			sourceTree = "<group>";
@@ -80,7 +88,8 @@
 		154EC2691BC21485002DBBEF /* ColorSpacesTests */ = {
 			isa = PBXGroup;
 			children = (
-				154EC26A1BC21485002DBBEF /* ColorSpacesTests.swift */,
+				154EC26A1BC21485002DBBEF /* ColorSpacesRGBTests.swift */,
+				154EC27B1BC21B73002DBBEF /* ColorSpacesXYZTests.swift */,
 				154EC26C1BC21485002DBBEF /* Info.plist */,
 			);
 			path = ColorSpacesTests;
@@ -142,6 +151,7 @@
 		154EC2521BC21485002DBBEF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Tim Wood";
 				TargetAttributes = {
@@ -193,6 +203,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				154EC2761BC21545002DBBEF /* RGBColor.swift in Sources */,
+				154EC2791BC21822002DBBEF /* XYZColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,7 +212,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154EC26B1BC21485002DBBEF /* ColorSpacesTests.swift in Sources */,
+				154EC26B1BC21485002DBBEF /* ColorSpacesRGBTests.swift in Sources */,
+				154EC27D1BC21B73002DBBEF /* ColorSpacesXYZTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,6 +320,7 @@
 		154EC2701BC21485002DBBEF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -317,12 +331,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.colorspaces.ColorSpaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		154EC2711BC21485002DBBEF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
