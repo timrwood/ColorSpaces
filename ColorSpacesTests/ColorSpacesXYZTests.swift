@@ -36,4 +36,31 @@ class ColorSpacesXYZTests: XCTestCase {
         XCTAssertLessThan(abs(rgb.b - 1.160669), 0.0001, "\(rgb.b) ~= 1.160669")
         XCTAssertEqual(rgb.alpha, 1)
     }
+    
+    func testXYZToLABX() {
+        let xyz = XYZColor(x: 1, y: 0, z: 0, alpha: 1)
+        let lab = xyz.toLAB()
+        XCTAssertLessThan(abs(lab.l - 0), 0.0001, "\(lab.l) ~= 0")
+        XCTAssertLessThan(abs(lab.a - 437.1441), 0.0001, "\(lab.a) ~= 437.1441")
+        XCTAssertLessThan(abs(lab.b - 0), 0.0001, "\(lab.b) ~= 0")
+        XCTAssertEqual(lab.alpha, 1)
+    }
+    
+    func testXYZToLABY() {
+        let xyz = XYZColor(x: 0, y: 1, z: 0, alpha: 1)
+        let lab = xyz.toLAB()
+        XCTAssertLessThan(abs(lab.l - 100.0000), 0.0001, "\(lab.l) ~= 100.0000")
+        XCTAssertLessThan(abs(lab.a + 431.0345), 0.0001, "\(lab.a) ~= -431.0345")
+        XCTAssertLessThan(abs(lab.b - 172.4138), 0.0001, "\(lab.b) ~= 172.4138")
+        XCTAssertEqual(lab.alpha, 1)
+    }
+    
+    func testXYZToLABZ() {
+        let xyz = XYZColor(x: 0, y: 0, z: 1, alpha: 1)
+        let lab = xyz.toLAB()
+        XCTAssertLessThan(abs(lab.l - 0), 0.0001, "\(lab.l) ~= 0")
+        XCTAssertLessThan(abs(lab.a - 0), 0.0001, "\(lab.a) ~= 0")
+        XCTAssertLessThan(abs(lab.b + 185.6406), 0.0001, "\(lab.b) ~= -185.6406")
+        XCTAssertEqual(lab.alpha, 1)
+    }
 }

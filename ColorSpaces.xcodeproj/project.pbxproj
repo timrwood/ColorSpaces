@@ -13,6 +13,8 @@
 		154EC2761BC21545002DBBEF /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC2751BC21545002DBBEF /* RGBColor.swift */; settings = {ASSET_TAGS = (); }; };
 		154EC2791BC21822002DBBEF /* XYZColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC2781BC21822002DBBEF /* XYZColor.swift */; settings = {ASSET_TAGS = (); }; };
 		154EC27D1BC21B73002DBBEF /* ColorSpacesXYZTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC27B1BC21B73002DBBEF /* ColorSpacesXYZTests.swift */; settings = {ASSET_TAGS = (); }; };
+		154EC27F1BC360F8002DBBEF /* LABColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC27E1BC360F8002DBBEF /* LABColor.swift */; settings = {ASSET_TAGS = (); }; };
+		154EC2801BC360F8002DBBEF /* LABColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154EC27E1BC360F8002DBBEF /* LABColor.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 		154EC2751BC21545002DBBEF /* RGBColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
 		154EC2781BC21822002DBBEF /* XYZColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XYZColor.swift; sourceTree = "<group>"; };
 		154EC27B1BC21B73002DBBEF /* ColorSpacesXYZTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorSpacesXYZTests.swift; sourceTree = "<group>"; };
+		154EC27E1BC360F8002DBBEF /* LABColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LABColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 			children = (
 				154EC25E1BC21485002DBBEF /* ColorSpaces.h */,
 				154EC2601BC21485002DBBEF /* Info.plist */,
+				154EC27E1BC360F8002DBBEF /* LABColor.swift */,
 				154EC2751BC21545002DBBEF /* RGBColor.swift */,
 				154EC2781BC21822002DBBEF /* XYZColor.swift */,
 			);
@@ -204,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				154EC2761BC21545002DBBEF /* RGBColor.swift in Sources */,
+				154EC27F1BC360F8002DBBEF /* LABColor.swift in Sources */,
 				154EC2791BC21822002DBBEF /* XYZColor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				154EC26B1BC21485002DBBEF /* ColorSpacesRGBTests.swift in Sources */,
+				154EC2801BC360F8002DBBEF /* LABColor.swift in Sources */,
 				154EC27D1BC21B73002DBBEF /* ColorSpacesXYZTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
