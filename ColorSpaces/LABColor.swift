@@ -9,10 +9,7 @@
 import UIKit
 
 struct LABColor {
-    let l: CGFloat
-    let a: CGFloat
-    let b: CGFloat
-    let alpha: CGFloat
+    let l, a, b, alpha: CGFloat
     
     func toXYZ() -> XYZColor {
         let fy = (l + 16) / 116
@@ -20,11 +17,16 @@ struct LABColor {
         let fx = fy + (a / 500)
         let fx3 = fx * fx * fx
         let fz3 = fz * fz * fz
-        let e: CGFloat = 0.008856
-        let k: CGFloat = 903.3
-        let x = fx3 > e ? fx3 : (116 * fx - 16) / k
-        let z = fz3 > e ? fx3 : (116 * fz - 16) / k
-        let y = l > e * k ? pow((l + 16) / 116, 3) : l / k
+        let x = fx3 > LAB_E ? fx3 : (116 * fx - 16) / LAB_K
+        let z = fz3 > LAB_E ? fx3 : (116 * fz - 16) / LAB_K
+        let y = l > LAB_EK ? pow((l + 16) / 116, 3) : l / LAB_K
         return XYZColor(x: x * 0.96422, y: y, z: z * 0.82521, alpha: alpha)
+    }
+    
+    func toLCH() -> LCHColor {
+        let c = sqrt(a * a + b * b)
+        let angle = atan2(b, a) * RAD_TO_DEG
+        let h = angle < 0 ? angle + 360 : angle
+        return LCHColor(l: l, c: c, h: h, alpha: alpha)
     }
 }

@@ -9,10 +9,7 @@
 import UIKit
 
 struct XYZColor {
-    let x: CGFloat
-    let y: CGFloat
-    let z: CGFloat
-    let alpha: CGFloat
+    let x, y, z, alpha: CGFloat
 
     func toRGB() -> RGBColor {
         let r = (x * 3.1338561) + (y * -1.6168667) + (z * -0.4906146)

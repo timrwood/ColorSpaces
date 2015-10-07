@@ -9,10 +9,7 @@
 import UIKit
 
 struct RGBColor {
-    let r: CGFloat
-    let g: CGFloat
-    let b: CGFloat
-    let alpha: CGFloat
+    let r, g, b, alpha: CGFloat
     
     private func sRGBCompand(v: CGFloat) -> CGFloat {
         return v > 0.04045 ? pow((v + 0.055) / 1.055, 2.4) : v / 12.92
@@ -28,7 +25,6 @@ struct RGBColor {
         return XYZColor(x: x, y: y, z: z, alpha: alpha)
     }
 }
-
 
 extension UIColor {
     func rgbColor() -> RGBColor? {
