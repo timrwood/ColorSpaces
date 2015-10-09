@@ -29,4 +29,13 @@ struct LABColor {
         let h = angle < 0 ? angle + 360 : angle
         return LCHColor(l: l, c: c, h: h, alpha: alpha)
     }
+    
+    func lerp(other: LABColor, t: CGFloat) -> LABColor {
+        return LABColor(
+            l: l + (other.l - l) * t,
+            a: a + (other.a - a) * t,
+            b: b + (other.b - b) * t,
+            alpha: alpha + (other.alpha - alpha) * t
+        )
+    }
 }

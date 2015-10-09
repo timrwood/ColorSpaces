@@ -45,4 +45,21 @@ class ColorSpacesRGBTests: XCTestCase {
         XCTAssertEqualWithAccuracy(xyz.z, 0.714173, accuracy: 1e-4)
         XCTAssertEqualWithAccuracy(xyz.alpha, 1, accuracy: 1e-4)
     }
+    
+    func testRGBLerp() {
+        let a = RGBColor(r: 0, g: 0.5, b: 1, alpha: 0.1)
+        let b = RGBColor(r: 0.2, g: 0.2, b: 0.2, alpha: 0.9)
+        let half = a.lerp(b, t: 0.5)
+        let quarter = a.lerp(b, t: 0.25)
+        
+        XCTAssertEqualWithAccuracy(half.r, 0.10, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.g, 0.35, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.b, 0.60, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.alpha, 0.5, accuracy: 1e-8)
+        
+        XCTAssertEqualWithAccuracy(quarter.r, 0.050, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.g, 0.425, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.b, 0.800, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.alpha, 0.3, accuracy: 1e-8)
+    }
 }

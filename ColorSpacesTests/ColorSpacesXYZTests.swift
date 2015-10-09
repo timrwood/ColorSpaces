@@ -64,4 +64,21 @@ class ColorSpacesXYZTests: XCTestCase {
         XCTAssertEqualWithAccuracy(lab.b, -185.6406, accuracy: 1e-4)
         XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-4)
     }
+    
+    func testXYZLerp() {
+        let a = XYZColor(x: 0, y: 1, z: 2, alpha: 0.1)
+        let b = XYZColor(x: 7, y: 8, z: 9, alpha: 0.9)
+        let half = a.lerp(b, t: 0.5)
+        let quarter = a.lerp(b, t: 0.25)
+        
+        XCTAssertEqualWithAccuracy(half.x, 3.5, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.y, 4.5, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.z, 5.5, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.alpha, 0.5, accuracy: 1e-8)
+        
+        XCTAssertEqualWithAccuracy(quarter.x, 1.75, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.y, 2.75, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.z, 3.75, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.alpha, 0.3, accuracy: 1e-8)
+    }
 }

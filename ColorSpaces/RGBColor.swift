@@ -24,6 +24,15 @@ struct RGBColor {
         let z: CGFloat = (R * 0.0139322) + (G * 0.0971045) + (B * 0.7141733)
         return XYZColor(x: x, y: y, z: z, alpha: alpha)
     }
+    
+    func lerp(other: RGBColor, t: CGFloat) -> RGBColor {
+        return RGBColor(
+            r: r + (other.r - r) * t,
+            g: g + (other.g - g) * t,
+            b: b + (other.b - b) * t,
+            alpha: alpha + (other.alpha - alpha) * t
+        )
+    }
 }
 
 extension UIColor {

@@ -27,4 +27,41 @@ class ColorSpacesLCHTests: XCTestCase {
         XCTAssertEqualWithAccuracy(lab.b, 193.99479197, accuracy: 1e-6)
         XCTAssertEqualWithAccuracy(lch.alpha, 1, accuracy: 1e-6)
     }
+    
+    func testLCHLerp() {
+        let a = LCHColor(l: 10, c: 70, h: 40, alpha: 0.8)
+        let b = LCHColor(l: 90, c: 20, h: 90, alpha: 0.1)
+        let half = a.lerp(b, t: 0.5)
+        let quarter = a.lerp(b, t: 0.25)
+        
+        XCTAssertEqualWithAccuracy(half.l, 50, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.c, 45, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.h, 65, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(half.alpha, 0.45, accuracy: 1e-8)
+        
+        XCTAssertEqualWithAccuracy(quarter.l, 30, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.c, 57.5, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.h, 52.5, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(quarter.alpha, 0.625, accuracy: 1e-8)
+    }
+    
+    func testLCHLerpAcrossHueBoundary() {
+        let a = LCHColor(l: 0, c: 0, h: 271, alpha: 1)
+        let b = LCHColor(l: 0, c: 0, h: 89, alpha: 1)
+        let a2b = a.lerp(b, t: 0.5)
+        let b2a = a.lerp(b, t: 0.5)
+        
+        XCTAssertEqualWithAccuracy(a2b.h, 0, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(b2a.h, 0, accuracy: 1e-8)
+    }
+    
+    func testLCHLerpAcrossHueBoundary2() {
+        let a = LCHColor(l: 0, c: 0, h: 350, alpha: 1)
+        let b = LCHColor(l: 0, c: 0, h: 70, alpha: 1)
+        let a2b = a.lerp(b, t: 0.5)
+        let b2a = a.lerp(b, t: 0.5)
+        
+        XCTAssertEqualWithAccuracy(a2b.h, 30, accuracy: 1e-8)
+        XCTAssertEqualWithAccuracy(b2a.h, 30, accuracy: 1e-8)
+    }
 }
