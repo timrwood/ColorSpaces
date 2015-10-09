@@ -13,56 +13,74 @@ class ColorSpacesXYZTests: XCTestCase {
     func testXYZToRGBX() {
         let xyz = XYZColor(x: 1, y: 0, z: 0, alpha: 1)
         let rgb = xyz.toRGB()
-        XCTAssertEqualWithAccuracy(rgb.r, 1.643056, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.g, -0.990608, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.b, 0.297374, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(rgb.r,  1.6668880, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.g, -0.9863667, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.b,  0.2615979, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-6)
     }
     
     func testXYZToRGBY() {
         let xyz = XYZColor(x: 0, y: 1, z: 0, alpha: 1)
         let rgb = xyz.toRGB()
-        XCTAssertEqualWithAccuracy(rgb.r, -1.233843, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.g, 1.328345, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.b, -0.515835, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(rgb.r, -1.2069714, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.g,  1.3161990, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.b, -0.4890281, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-6)
     }
     
     func testXYZToRGBZ() {
         let xyz = XYZColor(x: 0, y: 0, z: 1, alpha: 1)
         let rgb = xyz.toRGB()
-        XCTAssertEqualWithAccuracy(rgb.r, -0.729141, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.g, 0.201117, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.b, 1.160669, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(rgb.r, -0.7343888, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.g,  0.2253387, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.b,  1.0247476, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(rgb.alpha, 1, accuracy: 1e-6)
+    }
+    
+    func testXYZToRGBAndBack() {
+        let a = XYZColor(x: 0.123, y: 0.456, z: 0.789, alpha: 0.3)
+        let b = a.toRGB().toXYZ()
+        XCTAssertEqualWithAccuracy(a.x, b.x, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.y, b.y, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.z, b.z, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.alpha, b.alpha, accuracy: 1e-6)
     }
     
     func testXYZToLABX() {
         let xyz = XYZColor(x: 1, y: 0, z: 0, alpha: 1)
         let lab = xyz.toLAB()
-        XCTAssertEqualWithAccuracy(lab.l, 0, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.a, 437.1441, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.b, 0, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(lab.l, 0, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.a, 439.5730164, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(lab.b, 0, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-6)
     }
     
     func testXYZToLABY() {
         let xyz = XYZColor(x: 0, y: 1, z: 0, alpha: 1)
         let lab = xyz.toLAB()
-        XCTAssertEqualWithAccuracy(lab.l, 100.0000, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.a, -431.0345, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.b, 172.4138, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(lab.l, 100, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.a, -431.0344827, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(lab.b, 172.4137931, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-5)
         XCTAssertEqual(lab.alpha, 1)
     }
     
     func testXYZToLABZ() {
         let xyz = XYZColor(x: 0, y: 0, z: 1, alpha: 1)
         let lab = xyz.toLAB()
-        XCTAssertEqualWithAccuracy(lab.l, 0, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.a, 0, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.b, -185.6406, accuracy: 1e-4)
-        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-4)
+        XCTAssertEqualWithAccuracy(lab.l, 0, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.a, 0, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.b, -166.8199296, accuracy: 1e-5)
+        XCTAssertEqualWithAccuracy(lab.alpha, 1, accuracy: 1e-6)
+    }
+    
+    func testXYZToLABAndBack() {
+        let a = XYZColor(x: 0.123, y: 0.456, z: 0.789, alpha: 0.3)
+        let b = a.toLAB().toXYZ()
+        XCTAssertEqualWithAccuracy(a.x, b.x, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.y, b.y, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.z, b.z, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(a.alpha, b.alpha, accuracy: 1e-6)
     }
     
     func testXYZLerp() {
