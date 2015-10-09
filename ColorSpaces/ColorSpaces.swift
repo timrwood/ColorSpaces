@@ -51,6 +51,10 @@ struct RGBColor {
         return toXYZ().toLCH()
     }
     
+    func color() -> UIColor {
+        return UIColor(red: r, green: g, blue: b, alpha: alpha)
+    }
+    
     func lerp(other: RGBColor, t: CGFloat) -> RGBColor {
         return RGBColor(
             r: r + (other.r - r) * t,

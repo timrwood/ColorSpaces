@@ -19,6 +19,12 @@ class ColorSpacesRGBTests: XCTestCase {
         XCTAssertEqual(rgb.alpha, 0.75)
     }
     
+    func testCreatingUIColorFromRGB() {
+        let rgb = RGBColor(r: 0.1, g: 0.2, b: 0.3, alpha: 0.4)
+        let color = rgb.color()
+        XCTAssertEqual(color, UIColor(red: 0.1, green: 0.2, blue: 0.3, alpha: 0.4))
+    }
+    
     func testRGBToXYZRed() {
         let rgb = RGBColor(r: 1, g: 0, b: 0, alpha: 1)
         let xyz = rgb.toXYZ()
