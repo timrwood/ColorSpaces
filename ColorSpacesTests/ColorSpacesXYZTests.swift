@@ -83,6 +83,16 @@ class ColorSpacesXYZTests: XCTestCase {
         XCTAssertEqualWithAccuracy(a.alpha, b.alpha, accuracy: 1e-6)
     }
     
+    func testXYZToLCH() {
+        let original = XYZColor(x: 0.123, y: 0.456, z: 0.789, alpha: 0.3)
+        let manual = original.toLAB().toLCH()
+        let direct = original.toLCH()
+        XCTAssertEqualWithAccuracy(manual.l, direct.l, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.c, direct.c, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.h, direct.h, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.alpha, direct.alpha, accuracy: 1e-6)
+    }
+    
     func testXYZLerp() {
         let a = XYZColor(x: 0, y: 1, z: 2, alpha: 0.1)
         let b = XYZColor(x: 7, y: 8, z: 9, alpha: 0.9)

@@ -43,6 +43,14 @@ struct RGBColor {
         return XYZColor(x: x, y: y, z: z, alpha: alpha)
     }
     
+    func toLAB() -> LABColor {
+        return toXYZ().toLAB()
+    }
+    
+    func toLCH() -> LCHColor {
+        return toXYZ().toLCH()
+    }
+    
     func lerp(other: RGBColor, t: CGFloat) -> RGBColor {
         return RGBColor(
             r: r + (other.r - r) * t,
@@ -107,6 +115,10 @@ struct XYZColor {
         )
     }
     
+    func toLCH() -> LCHColor {
+        return toLAB().toLCH()
+    }
+    
     func lerp(other: XYZColor, t: CGFloat) -> XYZColor {
         return XYZColor(
             x: x + (other.x - x) * t,
@@ -149,6 +161,10 @@ struct LABColor {
         return LCHColor(l: l, c: c, h: h, alpha: alpha)
     }
     
+    func toRGB() -> RGBColor {
+        return toXYZ().toRGB()
+    }
+    
     func lerp(other: LABColor, t: CGFloat) -> LABColor {
         return LABColor(
             l: l + (other.l - l) * t,
@@ -172,6 +188,14 @@ struct LCHColor {
         let a = cos(rad) * c
         let b = sin(rad) * c
         return LABColor(l: l, a: a, b: b, alpha: alpha)
+    }
+    
+    func toXYZ() -> XYZColor {
+        return toLAB().toXYZ()
+    }
+    
+    func toRGB() -> RGBColor {
+        return toXYZ().toRGB()
     }
     
     func lerp(other: LCHColor, t: CGFloat) -> LCHColor {

@@ -55,6 +55,26 @@ class ColorSpacesRGBTests: XCTestCase {
         XCTAssertEqualWithAccuracy(a.alpha, b.alpha, accuracy: 1e-6)
     }
     
+    func testRGBToLAB() {
+        let original = RGBColor(r: 0.123, g: 0.456, b: 0.789, alpha: 0.3)
+        let manual = original.toXYZ().toLAB()
+        let direct = original.toLAB()
+        XCTAssertEqualWithAccuracy(manual.l, direct.l, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.a, direct.a, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.b, direct.b, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.alpha, direct.alpha, accuracy: 1e-6)
+    }
+    
+    func testRGBToLCH() {
+        let original = RGBColor(r: 0.123, g: 0.456, b: 0.789, alpha: 0.3)
+        let manual = original.toXYZ().toLAB().toLCH()
+        let direct = original.toLCH()
+        XCTAssertEqualWithAccuracy(manual.l, direct.l, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.c, direct.c, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.h, direct.h, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.alpha, direct.alpha, accuracy: 1e-6)
+    }
+    
     func testRGBLerp() {
         let a = RGBColor(r: 0, g: 0.5, b: 1, alpha: 0.1)
         let b = RGBColor(r: 0.2, g: 0.2, b: 0.2, alpha: 0.9)

@@ -37,6 +37,26 @@ class ColorSpacesLCHTests: XCTestCase {
         XCTAssertEqualWithAccuracy(a.alpha, b.alpha, accuracy: 1e-6)
     }
     
+    func testLCHToXYZ() {
+        let original = LCHColor(l: 12, c: 34, h: 56, alpha: 0.3)
+        let manual = original.toLAB().toXYZ()
+        let direct = original.toXYZ()
+        XCTAssertEqualWithAccuracy(manual.x, direct.x, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.y, direct.y, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.z, direct.z, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.alpha, direct.alpha, accuracy: 1e-6)
+    }
+    
+    func testLCHToRGB() {
+        let original = LCHColor(l: 12, c: 34, h: 56, alpha: 0.3)
+        let manual = original.toLAB().toXYZ().toRGB()
+        let direct = original.toRGB()
+        XCTAssertEqualWithAccuracy(manual.r, direct.r, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.g, direct.g, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.b, direct.b, accuracy: 1e-6)
+        XCTAssertEqualWithAccuracy(manual.alpha, direct.alpha, accuracy: 1e-6)
+    }
+    
     func testLCHLerp() {
         let a = LCHColor(l: 10, c: 70, h: 40, alpha: 0.8)
         let b = LCHColor(l: 90, c: 20, h: 90, alpha: 0.1)
