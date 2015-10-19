@@ -231,19 +231,11 @@ public struct LCHColor {
     }
     
     public func lerp(other: LCHColor, t: CGFloat) -> LCHColor {
-        let diffH = other.h - h
-        let destH: CGFloat
-        
-        if abs(diffH) > 180 {
-            destH = (h + (diffH + 360) * t) % 360
-        } else {
-            destH = h + diffH * t
-        }
-        
+        let angle = (((((other.h - h) % 360) + 540) % 360) - 180) * t
         return LCHColor(
             l: l + (other.l - l) * t,
             c: c + (other.c - c) * t,
-            h: destH,
+            h: (h + angle + 360) % 360,
             alpha: alpha + (other.alpha - alpha) * t
         )
     }
