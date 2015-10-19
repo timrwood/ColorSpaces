@@ -21,7 +21,7 @@ private let LAB_Z: CGFloat = 1.08883
 
 // MARK: - RGB
 
-struct RGBColor {
+public struct RGBColor {
     let r: CGFloat     // 0..1
     let g: CGFloat     // 0..1
     let b: CGFloat     // 0..1
@@ -65,7 +65,7 @@ struct RGBColor {
     }
 }
 
-extension UIColor {
+public extension UIColor {
     func rgbColor() -> RGBColor? {
         var r: CGFloat = 0
         var g: CGFloat = 0
@@ -81,7 +81,7 @@ extension UIColor {
 
 // MARK: - XYZ
 
-struct XYZColor {
+public struct XYZColor {
     let x: CGFloat     // 0..0.95047
     let y: CGFloat     // 0..1
     let z: CGFloat     // 0..1.08883
@@ -135,7 +135,7 @@ struct XYZColor {
 
 // MARK: - LAB
 
-struct LABColor {
+public struct LABColor {
     let l: CGFloat     // 0..100
     let a: CGFloat     // -128..128
     let b: CGFloat     // -128..128
@@ -181,7 +181,7 @@ struct LABColor {
 
 // MARK: - LCH
 
-struct LCHColor {
+public struct LCHColor {
     let l: CGFloat     // 0..100
     let c: CGFloat     // 0..128
     let h: CGFloat     // 0..360
