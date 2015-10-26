@@ -22,10 +22,10 @@ private let LAB_Z: CGFloat = 1.08883
 // MARK: - RGB
 
 public struct RGBColor {
-    let r: CGFloat     // 0..1
-    let g: CGFloat     // 0..1
-    let b: CGFloat     // 0..1
-    let alpha: CGFloat // 0..1
+    public let r: CGFloat     // 0..1
+    public let g: CGFloat     // 0..1
+    public let b: CGFloat     // 0..1
+    public let alpha: CGFloat // 0..1
     
     public init (r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat) {
         self.r = r
@@ -89,10 +89,10 @@ public extension UIColor {
 // MARK: - XYZ
 
 public struct XYZColor {
-    let x: CGFloat     // 0..0.95047
-    let y: CGFloat     // 0..1
-    let z: CGFloat     // 0..1.08883
-    let alpha: CGFloat // 0..1
+    public let x: CGFloat     // 0..0.95047
+    public let y: CGFloat     // 0..1
+    public let z: CGFloat     // 0..1.08883
+    public let alpha: CGFloat // 0..1
     
     public init (x: CGFloat, y: CGFloat, z: CGFloat, alpha: CGFloat) {
         self.x = x
@@ -150,10 +150,10 @@ public struct XYZColor {
 // MARK: - LAB
 
 public struct LABColor {
-    let l: CGFloat     // 0..100
-    let a: CGFloat     // -128..128
-    let b: CGFloat     // -128..128
-    let alpha: CGFloat // 0..1
+    public let l: CGFloat     //    0..100
+    public let a: CGFloat     // -128..128
+    public let b: CGFloat     // -128..128
+    public let alpha: CGFloat //    0..1
     
     public init (l: CGFloat, a: CGFloat, b: CGFloat, alpha: CGFloat) {
         self.l = l
@@ -203,10 +203,10 @@ public struct LABColor {
 // MARK: - LCH
 
 public struct LCHColor {
-    let l: CGFloat     // 0..100
-    let c: CGFloat     // 0..128
-    let h: CGFloat     // 0..360
-    let alpha: CGFloat // 0..1
+    public let l: CGFloat     // 0..100
+    public let c: CGFloat     // 0..128
+    public let h: CGFloat     // 0..360
+    public let alpha: CGFloat // 0..1
     
     public init (l: CGFloat, c: CGFloat, h: CGFloat, alpha: CGFloat) {
         self.l = l
