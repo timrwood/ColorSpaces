@@ -34,7 +34,7 @@ public struct RGBColor {
         self.alpha = alpha
     }
 
-    private func sRGBCompand(v: CGFloat) -> CGFloat {
+    fileprivate func sRGBCompand(_ v: CGFloat) -> CGFloat {
         let absV = abs(v)
         let out = absV > 0.04045 ? pow((absV + 0.055) / 1.055, 2.4) : absV / 12.92
         return v > 0 ? out : -out
@@ -62,7 +62,7 @@ public struct RGBColor {
         return UIColor(red: r, green: g, blue: b, alpha: alpha)
     }
     
-    public func lerp(other: RGBColor, t: CGFloat) -> RGBColor {
+    public func lerp(_ other: RGBColor, t: CGFloat) -> RGBColor {
         return RGBColor(
             r: r + (other.r - r) * t,
             g: g + (other.g - g) * t,
@@ -101,7 +101,7 @@ public struct XYZColor {
         self.alpha = alpha
     }
 
-    private func sRGBCompand(v: CGFloat) -> CGFloat {
+    fileprivate func sRGBCompand(_ v: CGFloat) -> CGFloat {
         let absV = abs(v)
         let out = absV > 0.0031308 ? 1.055 * pow(absV, 1 / 2.4) - 0.055 : absV * 12.92
         return v > 0 ? out : -out
@@ -117,7 +117,7 @@ public struct XYZColor {
         return RGBColor(r: R, g: G, b: B, alpha: alpha)
     }
     
-    private func labCompand(v: CGFloat) -> CGFloat {
+    fileprivate func labCompand(_ v: CGFloat) -> CGFloat {
         return v > LAB_E ? pow(v, 1.0 / 3.0) : (LAB_K_116 * v) + LAB_16_116
     }
     
@@ -137,7 +137,7 @@ public struct XYZColor {
         return toLAB().toLCH()
     }
     
-    public func lerp(other: XYZColor, t: CGFloat) -> XYZColor {
+    public func lerp(_ other: XYZColor, t: CGFloat) -> XYZColor {
         return XYZColor(
             x: x + (other.x - x) * t,
             y: y + (other.y - y) * t,
@@ -162,7 +162,7 @@ public struct LABColor {
         self.alpha = alpha
     }
 
-    private func xyzCompand(v: CGFloat) -> CGFloat {
+    fileprivate func xyzCompand(_ v: CGFloat) -> CGFloat {
         let v3 = v * v * v
         return v3 > LAB_E ? v3 : (v - LAB_16_116) / LAB_K_116
     }
@@ -190,7 +190,7 @@ public struct LABColor {
         return toXYZ().toRGB()
     }
     
-    public func lerp(other: LABColor, t: CGFloat) -> LABColor {
+    public func lerp(_ other: LABColor, t: CGFloat) -> LABColor {
         return LABColor(
             l: l + (other.l - l) * t,
             a: a + (other.a - a) * t,
@@ -230,12 +230,12 @@ public struct LCHColor {
         return toXYZ().toRGB()
     }
     
-    public func lerp(other: LCHColor, t: CGFloat) -> LCHColor {
-        let angle = (((((other.h - h) % 360) + 540) % 360) - 180) * t
+    public func lerp(_ other: LCHColor, t: CGFloat) -> LCHColor {
+        let angle = (((((other.h - h).truncatingRemainder(dividingBy: 360)) + 540).truncatingRemainder(dividingBy: 360)) - 180) * t
         return LCHColor(
             l: l + (other.l - l) * t,
             c: c + (other.c - c) * t,
-            h: (h + angle + 360) % 360,
+            h: (h + angle + 360).truncatingRemainder(dividingBy: 360),
             alpha: alpha + (other.alpha - alpha) * t
         )
     }
